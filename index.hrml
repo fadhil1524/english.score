@@ -1,0 +1,2367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>British English Score – Learn & Test</title>
+
+    <!-- ===== CSS ===== -->
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0b1a33;
+            --navy-light: #1a2f4f;
+            --blue: #1a6bb0;
+            --blue-light: #4a8fc7;
+            --gold: #f4b942;
+            --gold-light: #fad37a;
+            --white: #ffffff;
+            --gray: #f0f4f8;
+            --gray-dark: #4a5a6a;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --radius: 16px;
+            --transition: 0.3s ease;
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--gray);
+            color: #1a2a3a;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        button {
+            cursor: pointer;
+            font-family: inherit;
+            border: none;
+            background: none;
+            font-size: 1rem;
+        }
+
+        /* ---------- SCROLLBAR ---------- */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--gray);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--blue);
+            border-radius: 10px;
+        }
+
+        /* ---------- LAYOUT ---------- */
+        .app {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        /* ---------- HEADER / NAV ---------- */
+        header {
+            background: var(--navy);
+            color: var(--white);
+            padding: 16px 0;
+            border-radius: 0 0 var(--radius) var(--radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            color: var(--gold);
+        }
+        .logo small {
+            font-size: 0.75rem;
+            font-weight: 400;
+            opacity: 0.7;
+            display: block;
+            letter-spacing: 0.5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        nav button {
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+            background: transparent;
+            border: 1px solid transparent;
+        }
+        nav button:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+        nav button.active {
+            color: #fff;
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
+        }
+
+        .nav-score {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav-score .num {
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+
+        /* ---------- SECTIONS ---------- */
+        .section {
+            display: none;
+            animation: fadeUp 0.4s ease;
+        }
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ---------- CARDS ---------- */
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+            transition: var(--transition);
+        }
+        .card:hover {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .card-header h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+        .card-header .badge {
+            background: var(--blue);
+            color: #fff;
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .card-header .badge.gold {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        /* ---------- GRID ---------- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 860px) {
+            .grid-2,
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---------- LEVEL ITEMS ---------- */
+        .level-item {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 22px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--blue);
+            transition: var(--transition);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .level-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+        .level-item.completed {
+            border-left-color: var(--gold);
+        }
+        .level-item.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .level-item .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .level-item .title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--navy);
+        }
+        .level-item .ceff {
+            background: var(--gray);
+            padding: 2px 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--gray-dark);
+        }
+        .level-item .desc {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+        }
+        .level-item .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--gray);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 6px;
+        }
+        .level-item .progress-bar .fill {
+            height: 100%;
+            background: var(--blue);
+            border-radius: 10px;
+            transition: width 0.6s ease;
+        }
+        .level-item .progress-bar .fill.gold {
+            background: var(--gold);
+        }
+
+        .level-item .status-icon {
+            font-size: 1.2rem;
+        }
+
+        /* ---------- LESSON VIEW ---------- */
+        .lesson-content {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #1a2a3a;
+        }
+        .lesson-content h3 {
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin: 20px 0 10px;
+        }
+        .lesson-content h4 {
+            font-size: 1.05rem;
+            color: var(--navy-light);
+            margin: 16px 0 6px;
+        }
+        .lesson-content ul,
+        .lesson-content ol {
+            padding-left: 24px;
+            margin: 8px 0 12px;
+        }
+        .lesson-content li {
+            margin-bottom: 4px;
+        }
+        .lesson-content .example {
+            background: var(--gray);
+            padding: 12px 18px;
+            border-radius: 10px;
+            margin: 12px 0;
+            border-left: 4px solid var(--blue);
+            font-style: italic;
+        }
+        .lesson-content .vocab-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 12px 0;
+        }
+        @media (max-width: 600px) {
+            .lesson-content .vocab-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .lesson-content .vocab-item {
+            background: var(--gray);
+            padding: 10px 14px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .lesson-content .vocab-item .en {
+            font-weight: 600;
+            color: var(--navy);
+        }
+        .lesson-content .vocab-item .id {
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+        }
+
+        /* ---------- QUIZ ---------- */
+        .question {
+            background: var(--gray);
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin-bottom: 16px;
+            transition: var(--transition);
+        }
+        .question.correct {
+            border-left: 5px solid #2ecc71;
+            background: #eafaf1;
+        }
+        .question.wrong {
+            border-left: 5px solid #e74c3c;
+            background: #fdedec;
+        }
+
+        .question .q-text {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+            color: var(--navy);
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .options label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            background: var(--white);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            font-weight: 500;
+        }
+        .options label:hover {
+            border-color: var(--blue-light);
+            background: #f0f7ff;
+        }
+        .options input[type="radio"] {
+            accent-color: var(--blue);
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+        .options label.selected {
+            border-color: var(--blue);
+            background: #e8f0fe;
+        }
+        .options label.correct-answer {
+            border-color: #2ecc71;
+            background: #eafaf1;
+        }
+        .options label.wrong-answer {
+            border-color: #e74c3c;
+            background: #fdedec;
+        }
+
+        .question .explanation {
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: var(--white);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            border-left: 4px solid var(--blue);
+            display: none;
+        }
+        .question .explanation.show {
+            display: block;
+        }
+
+        .quiz-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .quiz-progress .info {
+            font-weight: 600;
+            color: var(--gray-dark);
+        }
+        .quiz-progress .info span {
+            color: var(--navy);
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            padding: 10px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--blue);
+            color: #fff;
+            border: none;
+        }
+        .btn:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(26, 107, 176, 0.3);
+        }
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+        .btn.gold {
+            background: var(--gold);
+            color: var(--navy);
+        }
+        .btn.gold:hover {
+            background: var(--gold-light);
+        }
+        .btn.outline {
+            background: transparent;
+            color: var(--blue);
+            border: 2px solid var(--blue);
+        }
+        .btn.outline:hover {
+            background: var(--blue);
+            color: #fff;
+        }
+        .btn.small {
+            padding: 6px 16px;
+            font-size: 0.8rem;
+        }
+        .btn.success {
+            background: #2ecc71;
+            color: #fff;
+        }
+        .btn.success:hover {
+            background: #27ae60;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        /* ---------- IELTS ---------- */
+        .ielts-section {
+            background: linear-gradient(145deg, #0b1a33, #1a2f4f);
+            color: #fff;
+            border-radius: var(--radius);
+            padding: 30px 32px;
+            margin-bottom: 24px;
+        }
+        .ielts-section h2 {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+        .ielts-section p {
+            opacity: 0.85;
+            max-width: 600px;
+        }
+
+        .ielts-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            box-shadow: var(--shadow);
+            color: #1a2a3a;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .ielts-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+        .ielts-card .title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--navy);
+        }
+        .ielts-card .desc {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+            margin: 4px 0 8px;
+        }
+        .ielts-card .tag {
+            display: inline-block;
+            background: var(--gray);
+            padding: 2px 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--gray-dark);
+        }
+
+        /* ---------- PROGRESS ---------- */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin: 12px 0;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 16px 10px;
+            background: var(--gray);
+            border-radius: 12px;
+        }
+        .stat-item .num {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+        .stat-item .label {
+            font-size: 0.8rem;
+            color: var(--gray-dark);
+            font-weight: 500;
+        }
+
+        .achievement {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            background: var(--gray);
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+        .achievement .icon {
+            font-size: 2rem;
+        }
+        .achievement .info .title {
+            font-weight: 600;
+            color: var(--navy);
+        }
+        .achievement .info .desc {
+            font-size: 0.85rem;
+            color: var(--gray-dark);
+        }
+        .achievement.locked {
+            opacity: 0.4;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 700px) {
+            .header-inner {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+            .logo {
+                font-size: 1.2rem;
+            }
+            nav {
+                justify-content: center;
+            }
+            nav button {
+                padding: 6px 14px;
+                font-size: 0.8rem;
+            }
+            .card {
+                padding: 18px 16px;
+            }
+            .ielts-section {
+                padding: 20px 18px;
+            }
+            .quiz-progress {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn-group {
+                flex-direction: column;
+            }
+            .btn-group .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .app {
+                padding: 0 12px 30px;
+            }
+            .level-item .top {
+                flex-wrap: wrap;
+            }
+            .stat-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* ---------- UTILITIES ---------- */
+        .text-center {
+            text-align: center;
+        }
+        .mt-8 {
+            margin-top: 8px;
+        }
+        .mt-16 {
+            margin-top: 16px;
+        }
+        .mt-24 {
+            margin-top: 24px;
+        }
+        .mb-8 {
+            margin-bottom: 8px;
+        }
+        .mb-16 {
+            margin-bottom: 16px;
+        }
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .gap-8 {
+            gap: 8px;
+        }
+        .gap-12 {
+            gap: 12px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--gray-dark);
+        }
+        .empty-state .icon {
+            font-size: 3rem;
+            margin-bottom: 12px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--navy);
+            color: #fff;
+            padding: 14px 24px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            font-weight: 500;
+            transform: translateY(80px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 999;
+            max-width: 360px;
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast.success {
+            border-left: 5px solid #2ecc71;
+        }
+        .toast.error {
+            border-left: 5px solid #e74c3c;
+        }
+        .toast.gold {
+            border-left: 5px solid var(--gold);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== TOAST ===== -->
+    <div id="toast" class="toast"></div>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="header-inner">
+            <div class="logo">
+                <div>
+                    🇬🇧 British <span>Score</span>
+                    <small>Learn • Test • Succeed</small>
+                </div>
+            </div>
+            <nav id="mainNav">
+                <button class="active" data-section="home">🏠 Home</button>
+                <button data-section="learn">📚 Learn</button>
+                <button data-section="ielts">🎯 IELTS</button>
+                <button data-section="progress">📊 Progress</button>
+            </nav>
+            <div class="nav-score">
+                ⭐ Score: <span class="num" id="totalScore">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== APP ===== -->
+    <div class="app">
+
+        <!-- ===== HOME ===== -->
+        <section id="section-home" class="section active">
+            <div class="card">
+                <div class="card-header">
+                    <h2>🇬🇧 Welcome to British Score</h2>
+                    <span class="badge gold">Your English Journey</span>
+                </div>
+                <p style="font-size:1.05rem; margin-bottom:12px;">
+                    Master British English from <strong>Beginner (A1)</strong> to <strong>IELTS Ready (C1)</strong>.
+                    Complete lessons, take quizzes, and track your progress — all in one place.
+                </p>
+                <div class="stat-grid" id="homeStats">
+                    <div class="stat-item"><div class="num" id="homeLevels">0</div><div class="label">Levels Completed</div></div>
+                    <div class="stat-item"><div class="num" id="homeQuizzes">0</div><div class="label">Quizzes Taken</div></div>
+                    <div class="stat-item"><div class="num" id="homeScore">0</div><div class="label">Total Score</div></div>
+                    <div class="stat-item"><div class="num" id="homeLessons">0</div><div class="label">Lessons Viewed</div></div>
+                </div>
+                <div class="btn-group">
+                    <button class="btn" onclick="navigateTo('learn')">📚 Start Learning</button>
+                    <button class="btn gold" onclick="navigateTo('ielts')">🎯 IELTS Prep</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="color:var(--navy); margin-bottom:12px;">📈 Your Recent Activity</h3>
+                <div id="recentActivity">
+                    <p style="color:var(--gray-dark);">Complete your first lesson to see activity here!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== LEARN ===== -->
+        <section id="section-learn" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <h2>📚 Learning Path</h2>
+                    <span class="badge">Start from Level 0</span>
+                </div>
+                <p style="color:var(--gray-dark); margin-bottom:16px;">
+                    Follow the path from Beginner to Advanced. Each level has lessons and a final quiz.
+                    Unlock the next level by completing the quiz with 60% or higher.
+                </p>
+                <div id="levelList" class="grid-2"></div>
+            </div>
+        </section>
+
+        <!-- ===== LEVEL DETAIL (hidden, shown dynamically) ===== -->
+        <section id="section-level" class="section">
+            <div class="card">
+                <div class="flex-between">
+                    <div>
+                        <button class="btn outline small" onclick="navigateTo('learn')">← Back to Levels</button>
+                        <h2 id="levelTitle" style="margin-top:10px; color:var(--navy);"></h2>
+                        <p id="levelDesc" style="color:var(--gray-dark);"></p>
+                    </div>
+                    <span id="levelBadge" class="badge"></span>
+                </div>
+                <div id="levelLessons" class="mt-16"></div>
+                <div id="levelQuiz" class="mt-24"></div>
+            </div>
+        </section>
+
+        <!-- ===== IELTS ===== -->
+        <section id="section-ielts" class="section">
+            <div class="ielts-section">
+                <h2>🎯 IELTS Preparation</h2>
+                <p>Get ready for the IELTS exam with targeted practice. Improve your reading, writing, listening, and speaking skills with British English.</p>
+            </div>
+
+            <div class="grid-3" id="ieltsGrid">
+                <div class="ielts-card" onclick="openIeltsModule('reading')">
+                    <div class="title">📖 Reading</div>
+                    <div class="desc">Academic & General Training passages with questions</div>
+                    <span class="tag">3 practice tests</span>
+                </div>
+                <div class="ielts-card" onclick="openIeltsModule('writing')">
+                    <div class="title">✍️ Writing</div>
+                    <div class="desc">Task 1 & Task 2 with sample answers</div>
+                    <span class="tag">5 topics</span>
+                </div>
+                <div class="ielts-card" onclick="openIeltsModule('listening')">
+                    <div class="title">🎧 Listening</div>
+                    <div class="desc">Four sections with British English accents</div>
+                    <span class="tag">4 practice tests</span>
+                </div>
+                <div class="ielts-card" onclick="openIeltsModule('speaking')">
+                    <div class="title">🗣️ Speaking</div>
+                    <div class="desc">Part 1, 2 & 3 with sample answers</div>
+                    <span class="tag">8 topics</span>
+                </div>
+                <div class="ielts-card" onclick="openIeltsModule('vocabulary')">
+                    <div class="title">📝 Vocabulary</div>
+                    <div class="desc">Academic word list & collocations</div>
+                    <span class="tag">200+ words</span>
+                </div>
+                <div class="ielts-card" onclick="openIeltsModule('grammar')">
+                    <div class="title">🔍 Grammar</div>
+                    <div class="desc">Complex structures for band 7+</div>
+                    <span class="tag">12 topics</span>
+                </div>
+            </div>
+
+            <!-- IELTS detail area -->
+            <div id="ieltsDetail" class="card mt-16" style="display:none;">
+                <div class="flex-between">
+                    <h3 id="ieltsDetailTitle" style="color:var(--navy);">Module</h3>
+                    <button class="btn outline small" onclick="closeIeltsDetail()">✕ Close</button>
+                </div>
+                <div id="ieltsDetailContent" class="mt-8"></div>
+            </div>
+        </section>
+
+        <!-- ===== PROGRESS ===== -->
+        <section id="section-progress" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <h2>📊 Your Progress</h2>
+                    <span class="badge gold">Keep going!</span>
+                </div>
+                <div class="stat-grid">
+                    <div class="stat-item"><div class="num" id="pLevels">0</div><div class="label">Levels Done</div></div>
+                    <div class="stat-item"><div class="num" id="pQuizzes">0</div><div class="label">Quizzes</div></div>
+                    <div class="stat-item"><div class="num" id="pScore">0</div><div class="label">Total Score</div></div>
+                    <div class="stat-item"><div class="num" id="pLessons">0</div><div class="label">Lessons</div></div>
+                </div>
+                <div style="margin-top:12px;">
+                    <div style="display:flex; justify-content:space-between; font-size:0.9rem; color:var(--gray-dark);">
+                        <span>Overall Progress</span>
+                        <span id="pPercent">0%</span>
+                    </div>
+                    <div style="width:100%; height:10px; background:var(--gray); border-radius:10px; overflow:hidden; margin-top:4px;">
+                        <div id="pBar" style="height:100%; width:0%; background:linear-gradient(90deg, var(--blue), var(--gold)); border-radius:10px; transition:width 0.6s ease;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="color:var(--navy); margin-bottom:12px;">🏆 Achievements</h3>
+                <div id="achievementsList"></div>
+            </div>
+
+            <div class="card">
+                <h3 style="color:var(--navy); margin-bottom:12px;">📋 Quiz History</h3>
+                <div id="quizHistory"></div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ================================================================
+        //  DATA
+        // ================================================================
+
+        const LEVELS = [{
+            id: 0,
+            name: 'Beginner',
+            ceff: 'A1',
+            desc: 'Start from zero. Learn basic greetings, numbers, and simple sentences.',
+            lessons: [{
+                title: 'Greetings & Introductions',
+                type: 'vocabulary',
+                content: `
+              <h3>👋 Hello! Let\'s start with basic greetings.</h3>
+              <p>In British English, we use different greetings depending on the time of day and formality.</p>
+              <div class="vocab-grid">
+                <div class="vocab-item"><span class="en">Hello</span> <span class="id">Halo</span></div>
+                <div class="vocab-item"><span class="en">Hi</span> <span class="id">Hai</span></div>
+                <div class="vocab-item"><span class="en">Good morning</span> <span class="id">Selamat pagi</span></div>
+                <div class="vocab-item"><span class="en">Good afternoon</span> <span class="id">Selamat siang</span></div>
+                <div class="vocab-item"><span class="en">Good evening</span> <span class="id">Selamat malam</span></div>
+                <div class="vocab-item"><span class="en">Good night</span> <span class="id">Selamat tidur</span></div>
+              </div>
+              <div class="example">
+                <strong>Example:</strong> "Good morning, my name is James. What's your name?"
+              </div>
+              <h4>Introducing yourself</h4>
+              <ul>
+                <li><strong>My name is...</strong> — Nama saya...</li>
+                <li><strong>I'm from...</strong> — Saya dari...</li>
+                <li><strong>I'm a student/teacher/engineer.</strong> — Saya seorang pelajar/guru/insinyur.</li>
+                <li><strong>Nice to meet you.</strong> — Senang bertemu denganmu.</li>
+              </ul>
+              <div class="example">
+                <strong>Dialogue:</strong><br>
+                A: "Hello, I'm Sarah. What's your name?"<br>
+                B: "Hi Sarah, I'm Tom. Nice to meet you!"<br>
+                A: "Nice to meet you too, Tom. Where are you from?"<br>
+                B: "I'm from London. And you?"<br>
+                A: "I'm from Manchester."
+              </div>
+            `
+            }, {
+                title: 'Numbers & Time',
+                type: 'vocabulary',
+                content: `
+              <h3>🔢 Numbers and telling time in British English</h3>
+              <p>Let's learn numbers 1-20 and how to tell the time.</p>
+              <div class="vocab-grid">
+                <div class="vocab-item"><span class="en">one</span> <span class="id">satu</span></div>
+                <div class="vocab-item"><span class="en">two</span> <span class="id">dua</span></div>
+                <div class="vocab-item"><span class="en">three</span> <span class="id">tiga</span></div>
+                <div class="vocab-item"><span class="en">four</span> <span class="id">empat</span></div>
+                <div class="vocab-item"><span class="en">five</span> <span class="id">lima</span></div>
+                <div class="vocab-item"><span class="en">six</span> <span class="id">enam</span></div>
+                <div class="vocab-item"><span class="en">seven</span> <span class="id">tujuh</span></div>
+                <div class="vocab-item"><span class="en">eight</span> <span class="id">delapan</span></div>
+                <div class="vocab-item"><span class="en">nine</span> <span class="id">sembilan</span></div>
+                <div class="vocab-item"><span class="en">ten</span> <span class="id">sepuluh</span></div>
+                <div class="vocab-item"><span class="en">eleven</span> <span class="id">sebelas</span></div>
+                <div class="vocab-item"><span class="en">twelve</span> <span class="id">dua belas</span></div>
+                <div class="vocab-item"><span class="en">thirteen</span> <span class="id">tiga belas</span></div>
+                <div class="vocab-item"><span class="en">fourteen</span> <span class="id">empat belas</span></div>
+                <div class="vocab-item"><span class="en">fifteen</span> <span class="id">lima belas</span></div>
+                <div class="vocab-item"><span class="en">sixteen</span> <span class="id">enam belas</span></div>
+                <div class="vocab-item"><span class="en">seventeen</span> <span class="id">tujuh belas</span></div>
+                <div class="vocab-item"><span class="en">eighteen</span> <span class="id">delapan belas</span></div>
+                <div class="vocab-item"><span class="en">nineteen</span> <span class="id">sembilan belas</span></div>
+                <div class="vocab-item"><span class="en">twenty</span> <span class="id">dua puluh</span></div>
+              </div>
+              <h4>Telling the time (British style)</h4>
+              <ul>
+                <li><strong>It's five o'clock.</strong> — Jam 5 tepat.</li>
+                <li><strong>It's half past two.</strong> — Jam 2.30.</li>
+                <li><strong>It's quarter past seven.</strong> — Jam 7.15.</li>
+                <li><strong>It's quarter to nine.</strong> — Jam 8.45.</li>
+                <li><strong>It's ten past eleven.</strong> — Jam 11.10.</li>
+                <li><strong>It's twenty to six.</strong> — Jam 5.40.</li>
+              </ul>
+              <div class="example">
+                <strong>Tip:</strong> In British English, we use "past" and "to" rather than "after" and "before".
+              </div>
+            `
+            }, {
+                title: 'Basic Grammar: To Be',
+                type: 'grammar',
+                content: `
+              <h3>📘 The verb "to be" — am, is, are</h3>
+              <p>This is the most important verb in English. Let's learn how to use it.</p>
+              <div class="vocab-grid">
+                <div class="vocab-item"><span class="en">I am (I'm)</span> <span class="id">Saya</span></div>
+                <div class="vocab-item"><span class="en">You are (You're)</span> <span class="id">Kamu</span></div>
+                <div class="vocab-item"><span class="en">He is (He's)</span> <span class="id">Dia (laki-laki)</span></div>
+                <div class="vocab-item"><span class="en">She is (She's)</span> <span class="id">Dia (perempuan)</span></div>
+                <div class="vocab-item"><span class="en">It is (It's)</span> <span class="id">Itu</span></div>
+                <div class="vocab-item"><span class="en">We are (We're)</span> <span class="id">Kami</span></div>
+                <div class="vocab-item"><span class="en">You are (You're)</span> <span class="id">Kalian</span></div>
+                <div class="vocab-item"><span class="en">They are (They're)</span> <span class="id">Mereka</span></div>
+              </div>
+              <h4>Positive sentences</h4>
+              <ul>
+                <li>I <strong>am</strong> a student.</li>
+                <li>She <strong>is</strong> my friend.</li>
+                <li>They <strong>are</strong> from London.</li>
+              </ul>
+              <h4>Negative sentences</h4>
+              <ul>
+                <li>I <strong>am not</strong> (I'm not) a teacher.</li>
+                <li>He <strong>is not</strong> (isn't) here.</li>
+                <li>We <strong>are not</strong> (aren't) ready.</li>
+              </ul>
+              <h4>Questions</h4>
+              <ul>
+                <li><strong>Am</strong> I late?</li>
+                <li><strong>Is</strong> she your sister?</li>
+                <li><strong>Are</strong> they coming?</li>
+              </ul>
+              <div class="example">
+                <strong>Practice dialogue:</strong><br>
+                A: "Are you a student?"<br>
+                B: "Yes, I am. I'm studying English. Is this your first lesson?"<br>
+                A: "Yes, it is. I'm a beginner."<br>
+                B: "That's great! We're all beginners here."
+              </div>
+            `
+            }],
+            quiz: [{
+                question: 'How do you say "Selamat pagi" in British English?',
+                options: ['Good morning', 'Good afternoon', 'Good evening', 'Good night'],
+                correct: 0,
+                explanation: '"Good morning" is used from sunrise until about 12pm.'
+            }, {
+                question: 'Which number is "fifteen"?',
+                options: ['14', '15', '16', '17'],
+                correct: 1,
+                explanation: 'Fifteen = 15. (Fourteen = 14, Sixteen = 16)'
+            }, {
+                question: 'What is the correct form: "She ___ a doctor."',
+                options: ['am', 'is', 'are', 'be'],
+                correct: 1,
+                explanation: 'Use "is" with he, she, it.'
+            }, {
+                question: 'How do you say "Jam 7.15" in British English?',
+                options: ['It\'s seven fifteen', 'It\'s quarter past seven', 'It\'s half past seven', 'It\'s quarter to seven'],
+                correct: 1,
+                explanation: '"Quarter past seven" = 7.15 in British English.'
+            }, {
+                question: '"Nice to meet you" is used when...',
+                options: ['You say goodbye', 'You meet someone for the first time', 'You ask for help', 'You say thank you'],
+                correct: 1,
+                explanation: '"Nice to meet you" is a common greeting when meeting someone for the first time.'
+            }]
+        }, {
+            id: 1,
+            name: 'Elementary',
+            ceff: 'A2',
+            desc: 'Build your vocabulary and start forming longer sentences. Talk about daily routines and past events.',
+            lessons: [{
+                title: 'Daily Routines',
+                type: 'vocabulary',
+                content: `
+              <h3>⏰ Talking about your daily routine</h3>
+              <p>Learn common verbs and phrases to describe your day.</p>
+              <div class="vocab-grid">
+                <div class="vocab-item"><span class="en">wake up</span> <span class="id">bangun</span></div>
+                <div class="vocab-item"><span class="en">get up</span> <span class="id">bangun dari tempat tidur</span></div>
+                <div class="vocab-item"><span class="en">have breakfast</span> <span class="id">sarapan</span></div>
+                <div class="vocab-item"><span class="en">go to work / school</span> <span class="id">pergi bekerja / sekolah</span></div>
+                <div class="vocab-item"><span class="en">have lunch</span> <span class="id">makan siang</span></div>
+                <div class="vocab-item"><span class="en">finish work</span> <span class="id">selesai bekerja</span></div>
+                <div class="vocab-item"><span class="en">go home</span> <span class="id">pulang</span></div>
+                <div class="vocab-item"><span class="en">have dinner</span> <span class="id">makan malam</span></div>
+                <div class="vocab-item"><span class="en">watch TV</span> <span class="id">menonton TV</span></div>
+                <div class="vocab-item"><span class="en">go to bed</span> <span class="id">tidur</span></div>
+              </div>
+              <h4>Example paragraph</h4>
+              <div class="example">
+                "I wake up at 7am. I get up and have breakfast at 7.30. I go to work at 8am. I have lunch at 12pm. I finish work at 5pm and go home. I have dinner at 7pm, then I watch TV. I go to bed at 10.30pm."
+              </div>
+              <p><strong>Tip:</strong> Use the present simple tense for routines and habits.</p>
+            `
+            }, {
+                title: 'Past Simple Tense',
+                type: 'grammar',
+                content: `
+              <h3>⏳ Past Simple Tense</h3>
+              <p>Use the past simple to talk about completed actions in the past.</p>
+              <h4>Regular verbs: add -ed</h4>
+              <ul>
+                <li>walk → <strong>walked</strong></li>
+                <li>play → <strong>played</strong></li>
+                <li>visit → <strong>visited</strong></li>
+                <li>study → <strong>studied</strong> (y → ied)</li>
+              </ul>
+              <h4>Irregular verbs (must memorise)</h4>
+              <ul>
+                <li>go → <strong>went</strong></li>
+                <li>have → <strong>had</strong></li>
+                <li>do → <strong>did</strong></li>
+                <li>say → <strong>said</strong></li>
+                <li>see → <strong>saw</strong></li>
+                <li>buy → <strong>bought</strong></li>
+                <li>come → <strong>came</strong></li>
+                <li>take → <strong>took</strong></li>
+              </ul>
+              <h4>Structure</h4>
+              <ul>
+                <li><strong>Positive:</strong> I <u>walked</u> to school yesterday.</li>
+                <li><strong>Negative:</strong> I <u>didn't walk</u> to school yesterday.</li>
+                <li><strong>Question:</strong> <u>Did</u> you <u>walk</u> to school yesterday?</li>
+              </ul>
+              <div class="example">
+                <strong>Practice:</strong> "Last weekend, I went to the cinema. I watched a great film. I didn't eat popcorn because I had dinner before."
+              </div>
+            `
+            }],
+            quiz: [{
+                question: 'What is the past simple of "go"?',
+                options: ['goed', 'went', 'gone', 'going'],
+                correct: 1,
+                explanation: '"Went" is the past simple of "go". (Gone is the past participle.)'
+            }, {
+                question: '"I ___ breakfast at 7am every day." Fill the blank.',
+                options: ['have', 'has', 'had', 'am having'],
+                correct: 0,
+                explanation: 'Use "have" for present simple with I/you/we/they.'
+            }, {
+                question: 'Which sentence is in the past simple?',
+                options: ['I eat breakfast.', 'I ate breakfast.', 'I am eating breakfast.', 'I will eat breakfast.'],
+                correct: 1,
+                explanation: '"I ate" is past simple. "I eat" is present, "I am eating" is present continuous.'
+            }, {
+                question: 'What is the negative of "She visited Paris"?',
+                options: ['She not visited Paris', 'She didn\'t visit Paris', 'She doesn\'t visit Paris', 'She didn\'t visited Paris'],
+                correct: 1,
+                explanation: 'Use "didn\'t" + base form: "She didn\'t visit Paris."'
+            }, {
+                question: '"Last year, I ___ a new car." Which is correct?',
+                options: ['buy', 'bought', 'buyed', 'have bought'],
+                correct: 1,
+                explanation: '"Bought" is the past simple of "buy".'
+            }]
+        }, {
+            id: 2,
+            name: 'Pre-Intermediate',
+            ceff: 'B1',
+            desc: 'Express opinions, talk about future plans, and understand more complex texts.',
+            lessons: [{
+                title: 'Future Tenses',
+                type: 'grammar',
+                content: `
+              <h3>🔮 Talking about the future</h3>
+              <p>In British English, we use several ways to talk about the future.</p>
+              <h4>1. "Will" for predictions and spontaneous decisions</h4>
+              <ul>
+                <li>I think it <strong>will</strong> rain tomorrow.</li>
+                <li>I <strong>will</strong> call you later. (spontaneous)</li>
+              </ul>
+              <h4>2. "Going to" for plans and intentions</h4>
+              <ul>
+                <li>I <strong>am going to</strong> study medicine.</li>
+                <li>She <strong>is going to</strong> travel to Japan.</li>
+              </ul>
+              <h4>3. Present Continuous for fixed arrangements</h4>
+              <ul>
+                <li>I <strong>am meeting</strong> my friend at 6pm.</li>
+                <li>We <strong>are flying</strong> to Paris next week.</li>
+              </ul>
+              <div class="example">
+                <strong>Compare:</strong><br>
+                "I'll help you with that." (spontaneous offer)<br>
+                "I'm going to help you with that." (planned intention)<br>
+                "I'm helping you with that tomorrow." (arrangement)
+              </div>
+            `
+            }, {
+                title: 'Making Comparisons',
+                type: 'vocabulary',
+                content: `
+              <h3>⚖️ Comparatives and superlatives</h3>
+              <p>Learn how to compare things in British English.</p>
+              <h4>Comparative: for comparing 2 things</h4>
+              <ul>
+                <li><strong>Short adjectives:</strong> add -er (tall → taller)</li>
+                <li><strong>Long adjectives:</strong> more + adjective (beautiful → more beautiful)</li>
+                <li><strong>Irregular:</strong> good → better, bad → worse, far → farther/further</li>
+              </ul>
+              <h4>Superlative: for comparing 3+ things</h4>
+              <ul>
+                <li><strong>Short adjectives:</strong> add -est (tall → tallest)</li>
+                <li><strong>Long adjectives:</strong> most + adjective (beautiful → most beautiful)</li>
+                <li><strong>Irregular:</strong> good → best, bad → worst, far → farthest/furthest</li>
+              </ul>
+              <div class="example">
+                <strong>Examples:</strong><br>
+                "London is <u>bigger</u> than Manchester."<br>
+                "The Thames is <u>longer</u> than the Seine."<br>
+                "She is the <u>most intelligent</u> student in the class."<br>
+                "This is the <u>best</u> coffee in town!"
+              </div>
+            `
+            }],
+            quiz: [{
+                question: '"I think it ___ rain later." Which is correct?',
+                options: ['will', 'is going to', 'am going to', 'shall'],
+                correct: 0,
+                explanation: 'Use "will" for predictions based on opinion.'
+            }, {
+                question: '"She is ___ than her sister." (tall)',
+                options: ['tall', 'taller', 'tallest', 'more tall'],
+                correct: 1,
+                explanation: '"Taller" is the comparative form of "tall".'
+            }, {
+                question: 'What is the superlative of "good"?',
+                options: ['gooder', 'best', 'better', 'most good'],
+                correct: 1,
+                explanation: '"Best" is the superlative of "good". (Better is comparative.)'
+            }, {
+                question: '"We ___ to the cinema tonight." (fixed arrangement)',
+                options: ['will go', 'are going', 'go', 'went'],
+                correct: 1,
+                explanation: 'Use present continuous "are going" for fixed arrangements.'
+            }, {
+                question: '"This book is ___ than the other one." (interesting)',
+                options: ['interesting', 'more interesting', 'most interesting', 'interestinger'],
+                correct: 1,
+                explanation: 'Use "more + adjective" for long adjectives in comparative.'
+            }]
+        }, {
+            id: 3,
+            name: 'Intermediate',
+            ceff: 'B1+',
+            desc: 'Discuss abstract topics, use conditionals, and understand British cultural references.',
+            lessons: [{
+                title: 'Conditionals (Zero & First)',
+                type: 'grammar',
+                content: `
+              <h3>🔁 Conditionals: Zero and First</h3>
+              <p>Conditionals are used to talk about possible situations and their results.</p>
+              <h4>Zero Conditional: General truths</h4>
+              <p><strong>If + present simple, ... present simple</strong></p>
+              <ul>
+                <li>If you <u>heat</u> water, it <u>boils</u>.</li>
+                <li>If I <u>am</u> late, my boss <u>gets</u> angry.</li>
+              </ul>
+              <h4>First Conditional: Real future possibilities</h4>
+              <p><strong>If + present simple, ... will + infinitive</strong></p>
+              <ul>
+                <li>If it <u>rains</u>, I <u>will stay</u> at home.</li>
+                <li>If she <u>studies</u> hard, she <u>will pass</u> the exam.</li>
+              </ul>
+              <div class="example">
+                <strong>British English tip:</strong> In British English, we often use "shall" with I/we in first conditional:<br>
+                "If I see him, I <u>shall</u> tell him."
+              </div>
+            `
+            }, {
+                title: 'British vs American Vocabulary',
+                type: 'vocabulary',
+                content: `
+              <h3>🇬🇧 British vs 🇺🇸 American Vocabulary</h3>
+              <p>Learn the key vocabulary differences to sound more British!</p>
+              <div class="vocab-grid">
+                <div class="vocab-item"><span class="en">flat</span> <span class="id">apartment (US)</span></div>
+                <div class="vocab-item"><span class="en">lift</span> <span class="id">elevator (US)</span></div>
+                <div class="vocab-item"><span class="en">lorry</span> <span class="id">truck (US)</span></div>
+                <div class="vocab-item"><span class="en">rubbish</span> <span class="id">garbage / trash (US)</span></div>
+                <div class="vocab-item"><span class="en">pavement</span> <span class="id">sidewalk (US)</span></div>
+                <div class="vocab-item"><span class="en">queue</span> <span class="id">line (US)</span></div>
+                <div class="vocab-item"><span class="en">holiday</span> <span class="id">vacation (US)</span></div>
+                <div class="vocab-item"><span class="en">post</span> <span class="id">mail (US)</span></div>
+                <div class="vocab-item"><span class="en">biscuit</span> <span class="id">cookie (US)</span></div>
+                <div class="vocab-item"><span class="en">sweets</span> <span class="id">candy (US)</span></div>
+              </div>
+              <div class="example">
+                <strong>British sentence:</strong> "I need to post this letter. I'll walk on the pavement and queue at the post office."<br>
+                <strong>American version:</strong> "I need to mail this letter. I'll walk on the sidewalk and stand in line at the post office."
+              </div>
+            `
+            }],
+            quiz: [{
+                question: '"If it rains, I ___ stay at home." Which is correct?',
+                options: ['will', 'would', 'am going to', 'shall'],
+                correct: 0,
+                explanation: 'First conditional uses "will" for the result.'
+            }, {
+                question: 'What is the British English word for "apartment"?',
+                options: ['flat', 'house', 'bungalow', 'villa'],
+                correct: 0,
+                explanation: '"Flat" is British English for "apartment".'
+            }, {
+                question: 'Zero conditional: "If you ___ water, it boils."',
+                options: ['heat', 'heated', 'will heat', 'are heating'],
+                correct: 0,
+                explanation: 'Zero conditional uses present simple in both clauses.'
+            }, {
+                question: 'What is the British word for "sidewalk"?',
+                options: ['pavement', 'road', 'path', 'lane'],
+                correct: 0,
+                explanation: '"Pavement" is British for "sidewalk".'
+            }, {
+                question: '"If she studies hard, she ___ pass." Which is correct?',
+                options: ['will', 'would', 'shall', 'might'],
+                correct: 0,
+                explanation: 'First conditional: if + present, will + infinitive.'
+            }]
+        }, {
+            id: 4,
+            name: 'Upper-Intermediate',
+            ceff: 'B2',
+            desc: 'Master complex grammar, express nuance, and understand British media.',
+            lessons: [{
+                title: 'Passive Voice',
+                type: 'grammar',
+                content: `
+              <h3>📦 Passive Voice</h3>
+              <p>In the passive voice, the focus is on the action, not the doer.</p>
+              <p><strong>Active:</strong> The chef <u>cooks</u> the meal.<br>
+              <strong>Passive:</strong> The meal <u>is cooked</u> by the chef.</p>
+              <h4>Structure: be + past participle</h4>
+              <ul>
+                <li>Present: is/am/are + past participle<br>
+                  "English <u>is spoken</u> all over the world."</li>
+                <li>Past: was/were + past participle<br>
+                  "The letter <u>was sent</u> yesterday."</li>
+                <li>Future: will be + past participle<br>
+                  "The results <u>will be announced</u> soon."</li>
+                <li>Present perfect: have/has been + past participle<br>
+                  "The house <u>has been sold</u>."</li>
+              </ul>
+              <div class="example">
+                <strong>British English example:</strong><br>
+                "The Queen <u>is greeted</u> with great respect."<br>
+                "The match <u>was postponed</u> due to rain."
+              </div>
+            `
+            }, {
+                title: 'British Idioms',
+                type: 'vocabulary',
+                content: `
+              <h3>🇬🇧 Common British Idioms</h3>
+              <p>Idioms are phrases with figurative meanings. Here are some popular British ones:</p>
+              <div class="vocab-grid">
+                <div class="vocab-item"><span class="en">It's raining cats and dogs</span> <span class="id">Hujan deras</span></div>
+                <div class="vocab-item"><span class="en">Break a leg</span> <span class="id">Semoga sukses</span></div>
+                <div class="vocab-item"><span class="en">Piece of cake</span> <span class="id">Sangat mudah</span></div>
+                <div class="vocab-item"><span class="en">Cost an arm and a leg</span> <span class="id">Sangat mahal</span></div>
+                <div class="vocab-item"><span class="en">Hit the nail on the head</span> <span class="id">Tepat sekali</span></div>
+                <div class="vocab-item"><span class="en">Once in a blue moon</span> <span class="id">Sangat jarang</span></div>
+                <div class="vocab-item"><span class="en">The ball is in your court</span> <span class="id">Giliranmu</span></div>
+                <div class="vocab-item"><span class="en">Under the weather</span> <span class="id">Sedang sakit</span></div>
+              </div>
+              <div class="example">
+                <strong>In context:</strong><br>
+                "I'm feeling a bit <u>under the weather</u> today."<br>
+                "That exam was a <u>piece of cake</u>!"<br>
+                "It's been <u>raining cats and dogs</u> all morning."
+              </div>
+            `
+            }],
+            quiz: [{
+                question: 'Passive: "The book ___ by J.K. Rowling." (write)',
+                options: ['wrote', 'was written', 'is writing', 'has written'],
+                correct: 1,
+                explanation: 'Past passive: was/were + past participle (written).'
+            }, {
+                question: 'What does "piece of cake" mean?',
+                options: ['Very difficult', 'Very easy', 'Very expensive', 'Very rare'],
+                correct: 1,
+                explanation: '"Piece of cake" means something is very easy to do.'
+            }, {
+                question: '"The house ___ built in 1990." Which is correct?',
+                options: ['is', 'was', 'has', 'will'],
+                correct: 1,
+                explanation: 'Past passive: was + past participle (built).'
+            }, {
+                question: 'What does "under the weather" mean?',
+                options: ['Under a storm', 'Feeling ill', 'Very happy', 'Very busy'],
+                correct: 1,
+                explanation: '"Under the weather" means feeling unwell or sick.'
+            }, {
+                question: '"The project ___ finished by next Friday." (future passive)',
+                options: ['is', 'was', 'will be', 'has been'],
+                correct: 2,
+                explanation: 'Future passive: will be + past participle.'
+            }]
+        }, {
+            id: 5,
+            name: 'Advanced',
+            ceff: 'C1',
+            desc: 'Near-native fluency. Master complex texts, nuanced grammar, and British culture.',
+            lessons: [{
+                title: 'Advanced Conditionals (2nd & 3rd)',
+                type: 'grammar',
+                content: `
+              <h3>🔀 Second and Third Conditionals</h3>
+              <h4>Second Conditional: Unreal present/future</h4>
+              <p><strong>If + past simple, ... would + infinitive</strong></p>
+              <ul>
+                <li>If I <u>had</u> more money, I <u>would travel</u> the world.</li>
+                <li>If she <u>studied</u> harder, she <u>would pass</u>.</li>
+              </ul>
+              <h4>Third Conditional: Unreal past</h4>
+              <p><strong>If + past perfect, ... would have + past participle</strong></p>
+              <ul>
+                <li>If I <u>had studied</u> harder, I <u>would have passed</u> the exam.</li>
+                <li>If she <u>had taken</u> the job, she <u>would have moved</u> to London.</li>
+              </ul>
+              <div class="example">
+                <strong>British English nuance:</strong> In British English, we sometimes use "should" in place of "would" in first person:<br>
+                "If I were you, I <u>should</u> accept the offer." (formal)
+              </div>
+            `
+            }, {
+                title: 'British Culture & Etiquette',
+                type: 'vocabulary',
+                content: `
+              <h3>🇬🇧 British Culture & Social Etiquette</h3>
+              <p>Understanding British culture will help you sound more natural.</p>
+              <h4>Key cultural points:</h4>
+              <ul>
+                <li><strong>Queuing:</strong> Brits love queues. Always stand in line politely.</li>
+                <li><strong>Talking about weather:</strong> It's a national obsession! "Lovely weather, isn't it?"</li>
+                <li><strong>Apologising:</strong> Brits apologise frequently, even for small things. "Sorry!"</li>
+                <li><strong>Tea time:</strong> Afternoon tea with biscuits is a cherished tradition.</li>
+                <li><strong>Politeness:</strong> "Please", "thank you", and "excuse me" are used constantly.</li>
+                <li><strong>Understatement:</strong> Brits often understate. "Not bad" can mean "very good".</li>
+              </ul>
+              <div class="example">
+                <strong>British dialogue:</strong><br>
+                A: "What do you think of the weather?"<br>
+                B: "It's a bit chilly, isn't it?" (actually very cold)<br>
+                A: "Quite right. Fancy a cuppa?"<br>
+                B: "Oh, that would be lovely, thanks!"
+              </div>
+            `
+            }],
+            quiz: [{
+                question: 'Second conditional: "If I ___ a millionaire, I ___ travel the world."',
+                options: ['was / will', 'were / would', 'am / would', 'had been / would have'],
+                correct: 1,
+                explanation: 'Second conditional: if + past (were), would + infinitive.'
+            }, {
+                question: 'Third conditional: "If she ___ the job, she ___ to London."',
+                options: ['took / would move', 'had taken / would have moved', 'took / will move', 'has taken / would move'],
+                correct: 1,
+                explanation: 'Third conditional: if + past perfect, would have + past participle.'
+            }, {
+                question: 'What is a typical British way to start a conversation?',
+                options: ['How are you?', 'Lovely weather, isn\'t it?', 'What do you do?', 'Nice to meet you.'],
+                correct: 1,
+                explanation: 'Brits often start conversations with weather comments. It\'s a cultural icebreaker.'
+            }, {
+                question: '"If I were you, I ___ accept the offer." Which is most British?',
+                options: ['would', 'will', 'shall', 'should'],
+                correct: 3,
+                explanation: 'In formal British English, "should" is used with I/we in second conditional.'
+            }, {
+                question: 'What does "Not bad" often mean in British English?',
+                options: ['Terrible', 'Average', 'Very good', 'Bad'],
+                correct: 2,
+                explanation: 'Brits often understate; "not bad" can mean "very good" or "excellent".'
+            }]
+        }, {
+            id: 6,
+            name: 'IELTS Preparation',
+            ceff: 'C1+',
+            desc: 'Focus on IELTS-specific skills: academic vocabulary, complex grammar, and test strategies.',
+            lessons: [{
+                title: 'IELTS Writing Task 2',
+                type: 'writing',
+                content: `
+              <h3>✍️ IELTS Writing Task 2: Essay Writing</h3>
+              <p>For Task 2, you must write a 250-word essay on a given topic. Here are key tips:</p>
+              <h4>Structure:</h4>
+              <ul>
+                <li><strong>Introduction:</strong> Paraphrase the question, state your opinion.</li>
+                <li><strong>Body paragraph 1:</strong> Main point + explanation + example.</li>
+                <li><strong>Body paragraph 2:</strong> Another point + explanation + example.</li>
+                <li><strong>Conclusion:</strong> Summarise and restate your opinion.</li>
+              </ul>
+              <h4>Useful phrases:</h4>
+              <ul>
+                <li>It is widely believed that...</li>
+                <li>On the one hand / On the other hand...</li>
+                <li>Furthermore / Moreover / In addition...</li>
+                <li>Consequently / As a result...</li>
+                <li>In conclusion / To sum up...</li>
+              </ul>
+              <div class="example">
+                <strong>Sample introduction:</strong><br>
+                "It is widely believed that technology has revolutionised the way we communicate. While some argue that this has brought people closer together, others contend that it has led to social isolation. This essay will discuss both perspectives and argue that technology, when used mindfully, enhances rather than hinders human connection."
+              </div>
+            `
+            }, {
+                title: 'IELTS Speaking Part 2',
+                type: 'speaking',
+                content: `
+              <h3>🗣️ IELTS Speaking Part 2: The Long Turn</h3>
+              <p>You will be given a topic card and have 1 minute to prepare, then speak for 1-2 minutes.</p>
+              <h4>Structure your talk:</h4>
+              <ul>
+                <li><strong>Introduction:</strong> Briefly introduce the topic.</li>
+                <li><strong>Main points:</strong> Answer the bullet points on the card.</li>
+                <li><strong>Conclusion:</strong> End with a personal reflection or future thought.</li>
+              </ul>
+              <h4>Useful linking words for fluency:</h4>
+              <ul>
+                <li>Firstly, ... Secondly, ... Finally, ...</li>
+                <li>I remember when...</li>
+                <li>What I found most interesting was...</li>
+                <li>Looking back, I think...</li>
+                <li>If I could do it again, I would...</li>
+              </ul>
+              <div class="example">
+                <strong>Sample topic:</strong> "Describe a person who has influenced you."<br>
+                <strong>Sample opening:</strong> "The person who has influenced me the most is my grandfather. He was a kind and wise man who taught me the value of hard work and perseverance. I'd like to tell you about him..."
+              </div>
+            `
+            }],
+            quiz: [{
+                question: 'What is the recommended word count for IELTS Writing Task 2?',
+                options: ['150 words', '200 words', '250 words', '300 words'],
+                correct: 2,
+                explanation: 'IELTS Writing Task 2 requires at least 250 words.'
+            }, {
+                question: 'How long do you speak in IELTS Speaking Part 2?',
+                options: ['1-2 minutes', '2-3 minutes', '3-4 minutes', '4-5 minutes'],
+                correct: 0,
+                explanation: 'You speak for 1-2 minutes in Part 2 (the long turn).'
+            }, {
+                question: 'Which is NOT a good linking word for an essay?',
+                options: ['Furthermore', 'Moreover', 'Additionally', 'Anyway'],
+                correct: 3,
+                explanation: '"Anyway" is informal and not appropriate for academic writing.'
+            }, {
+                question: 'In IELTS Writing Task 2, you should...',
+                options: ['Write a list of bullet points', 'Write a structured essay', 'Write a short story', 'Write a poem'],
+                correct: 1,
+                explanation: 'Task 2 requires a formal, structured essay with introduction, body, and conclusion.'
+            }, {
+                question: 'How much preparation time do you get in IELTS Speaking Part 2?',
+                options: ['30 seconds', '1 minute', '2 minutes', '5 minutes'],
+                correct: 1,
+                explanation: 'You get 1 minute to prepare your talk in Part 2.'
+            }]
+        }];
+
+        // ================================================================
+        //  STATE
+        // ================================================================
+
+        let state = {
+            currentSection: 'home',
+            currentLevelId: null,
+            currentLessonIndex: 0,
+            quizAnswers: {}, // { levelId: { questionIndex: selectedOption } }
+            quizSubmitted: {}, // { levelId: true/false }
+            levelProgress: {}, // { levelId: { lessonsDone: [], quizScore: null, completed: false } }
+            totalScore: 0,
+            quizHistory: [], // { levelId, date, score, total }
+            achievements: [],
+            ieltsModule: null,
+        };
+
+        // ================================================================
+        //  LOCAL STORAGE
+        // ================================================================
+
+        function loadState() {
+            try {
+                const saved = localStorage.getItem('britishScoreState');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    state = { ...state, ...parsed };
+                    // ensure nested objects exist
+                    if (!state.quizAnswers) state.quizAnswers = {};
+                    if (!state.quizSubmitted) state.quizSubmitted = {};
+                    if (!state.levelProgress) state.levelProgress = {};
+                    if (!state.quizHistory) state.quizHistory = [];
+                    if (!state.achievements) state.achievements = [];
+                }
+            } catch (e) { console.warn('Load state error', e); }
+            // ensure all levels have progress entry
+            LEVELS.forEach(lv => {
+                if (!state.levelProgress[lv.id]) {
+                    state.levelProgress[lv.id] = { lessonsDone: [], quizScore: null, completed: false };
+                }
+            });
+            updateScore();
+        }
+
+        function saveState() {
+            try {
+                localStorage.setItem('britishScoreState', JSON.stringify(state));
+            } catch (e) { console.warn('Save state error', e); }
+        }
+
+        // ================================================================
+        //  SCORE & PROGRESS HELPERS
+        // ================================================================
+
+        function updateScore() {
+            let total = 0;
+            let completed = 0;
+            let lessonsViewed = 0;
+            LEVELS.forEach(lv => {
+                const prog = state.levelProgress[lv.id];
+                if (prog && prog.quizScore !== null) {
+                    total += prog.quizScore;
+                    completed++;
+                }
+                if (prog && prog.lessonsDone) {
+                    lessonsViewed += prog.lessonsDone.length;
+                }
+            });
+            state.totalScore = total;
+            // update nav
+            document.getElementById('totalScore').textContent = total;
+            return { total, completed, lessonsViewed };
+        }
+
+        function getLevelProgress(levelId) {
+            if (!state.levelProgress[levelId]) {
+                state.levelProgress[levelId] = { lessonsDone: [], quizScore: null, completed: false };
+                saveState();
+            }
+            return state.levelProgress[levelId];
+        }
+
+        function isLevelUnlocked(levelId) {
+            if (levelId === 0) return true;
+            const prev = state.levelProgress[levelId - 1];
+            if (!prev) return false;
+            return prev.completed === true;
+        }
+
+        function isLevelCompleted(levelId) {
+            const prog = state.levelProgress[levelId];
+            return prog && prog.completed === true;
+        }
+
+        function getLevelScore(levelId) {
+            const prog = state.levelProgress[levelId];
+            return prog && prog.quizScore !== null ? prog.quizScore : 0;
+        }
+
+        function getLevelLessonsDone(levelId) {
+            const prog = state.levelProgress[levelId];
+            return prog && prog.lessonsDone ? prog.lessonsDone : [];
+        }
+
+        // ================================================================
+        //  NAVIGATION
+        // ================================================================
+
+        function navigateTo(section, data) {
+            // hide all sections
+            document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+            // show target
+            const target = document.getElementById('section-' + section);
+            if (target) target.classList.add('active');
+
+            // update nav buttons
+            document.querySelectorAll('#mainNav button').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.section === section);
+            });
+
+            state.currentSection = section;
+            saveState();
+
+            // render
+            switch (section) {
+                case 'home':
+                    renderHome();
+                    break;
+                case 'learn':
+                    renderLearn();
+                    break;
+                case 'ielts':
+                    renderIelts();
+                    break;
+                case 'progress':
+                    renderProgress();
+                    break;
+                case 'level':
+                    if (data && data.levelId !== undefined) {
+                        state.currentLevelId = data.levelId;
+                        renderLevel(data.levelId);
+                    }
+                    break;
+            }
+        }
+
+        // ================================================================
+        //  RENDER: HOME
+        // ================================================================
+
+        function renderHome() {
+            const stats = updateScore();
+            document.getElementById('homeLevels').textContent = stats.completed;
+            document.getElementById('homeQuizzes').textContent = state.quizHistory.length;
+            document.getElementById('homeScore').textContent = stats.total;
+            document.getElementById('homeLessons').textContent = stats.lessonsViewed;
+
+            // recent activity
+            const recent = state.quizHistory.slice(-3).reverse();
+            const container = document.getElementById('recentActivity');
+            if (recent.length === 0) {
+                container.innerHTML = `<p style="color:var(--gray-dark);">Complete your first quiz to see activity here!</p>`;
+            } else {
+                container.innerHTML = recent.map(q => `
+              <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--gray);">
+                <span>📝 Level ${q.levelId + 1}: ${q.score}/${q.total}</span>
+                <span style="color:var(--gray-dark); font-size:0.85rem;">${new Date(q.date).toLocaleDateString()}</span>
+              </div>
+            `).join('');
+            }
+        }
+
+        // ================================================================
+        //  RENDER: LEARN
+        // ================================================================
+
+        function renderLearn() {
+            const container = document.getElementById('levelList');
+            container.innerHTML = LEVELS.map(lv => {
+                const prog = getLevelProgress(lv.id);
+                const unlocked = isLevelUnlocked(lv.id);
+                const completed = isLevelCompleted(lv.id);
+                const score = getLevelScore(lv.id);
+                const lessonsDone = getLevelLessonsDone(lv.id);
+                const totalLessons = lv.lessons.length;
+                const pct = totalLessons > 0 ? Math.round((lessonsDone.length / totalLessons) * 100) : 0;
+                const isLocked = !unlocked && lv.id > 0;
+
+                return `
+              <div class="level-item ${completed ? 'completed' : ''} ${isLocked ? 'locked' : ''}"
+                   onclick="${isLocked ? '' : `openLevel(${lv.id})`}"
+                   style="${isLocked ? 'opacity:0.5; pointer-events:none;' : ''}">
+                <div class="top">
+                  <span class="title">${lv.id + 1}. ${lv.name}</span>
+                  <span class="ceff">${lv.ceff}</span>
+                </div>
+                <div class="desc">${lv.desc}</div>
+                <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem; color:var(--gray-dark);">
+                  <span>${lessonsDone.length}/${totalLessons} lessons</span>
+                  <span>${completed ? '✅ Completed' : score > 0 ? `⭐ ${score}%` : ''}</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="fill ${completed ? 'gold' : ''}" style="width:${completed ? 100 : pct}%;"></div>
+                </div>
+                ${isLocked ? '<span style="font-size:0.8rem; color:var(--gray-dark);">🔒 Complete previous level</span>' : ''}
+              </div>
+            `;
+            }).join('');
+        }
+
+        // ================================================================
+        //  RENDER: LEVEL DETAIL
+        // ================================================================
+
+        function openLevel(levelId) {
+            navigateTo('level', { levelId });
+        }
+
+        function renderLevel(levelId) {
+            const lv = LEVELS.find(l => l.id === levelId);
+            if (!lv) return;
+
+            document.getElementById('levelTitle').textContent = `${lv.id + 1}. ${lv.name}`;
+            document.getElementById('levelDesc').textContent = lv.desc;
+            document.getElementById('levelBadge').textContent = lv.ceff;
+
+            const prog = getLevelProgress(levelId);
+            const lessonsDone = prog.lessonsDone || [];
+            const totalLessons = lv.lessons.length;
+
+            // lessons
+            const lessonsContainer = document.getElementById('levelLessons');
+            lessonsContainer.innerHTML = `
+            <h3 style="color:var(--navy); margin-bottom:12px;">📖 Lessons</h3>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              ${lv.lessons.map((lesson, idx) => {
+                const done = lessonsDone.includes(idx);
+                return `
+                  <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; background:var(--gray); border-radius:12px; border-left:4px solid ${done ? '#2ecc71' : 'var(--blue)'};">
+                    <div>
+                      <span style="font-weight:600;">${idx + 1}. ${lesson.title}</span>
+                      <span style="font-size:0.75rem; background:var(--white); padding:2px 10px; border-radius:40px; margin-left:8px;">${lesson.type}</span>
+                    </div>
+                    <div>
+                      ${done ? '✅' : `<button class="btn small" onclick="openLesson(${levelId}, ${idx})">Start</button>`}
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+            <div style="margin-top:12px; font-size:0.9rem; color:var(--gray-dark);">
+              ${lessonsDone.length}/${totalLessons} lessons completed
+            </div>
+          `;
+
+            // quiz
+            const quizContainer = document.getElementById('levelQuiz');
+            const quizSubmitted = state.quizSubmitted[levelId] || false;
+            const quizScore = prog.quizScore;
+
+            if (quizSubmitted && quizScore !== null) {
+                quizContainer.innerHTML = `
+              <h3 style="color:var(--navy); margin-bottom:8px;">📝 Quiz Complete!</h3>
+              <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+                <span style="font-size:1.5rem; font-weight:700; color:${quizScore >= 60 ? '#2ecc71' : '#e74c3c'};">
+                  ${quizScore}%
+                </span>
+                <span style="color:var(--gray-dark);">
+                  ${quizScore >= 60 ? '✅ You passed! Level unlocked for next stage.' : '❌ You need 60% to pass. Try again.'}
+                </span>
+                <button class="btn outline small" onclick="resetQuiz(${levelId})">🔄 Retry Quiz</button>
+                <button class="btn small" onclick="showQuizReview(${levelId})">📖 Review Answers</button>
+              </div>
+              ${quizScore >= 60 ? `<div style="margin-top:8px; color:#2ecc71; font-weight:600;">🎉 Level ${lv.name} completed!</div>` : ''}
+            `;
+            } else {
+                // show quiz
+                const hasStarted = state.quizAnswers[levelId] && Object.keys(state.quizAnswers[levelId]).length > 0;
+                quizContainer.innerHTML = `
+              <h3 style="color:var(--navy); margin-bottom:12px;">📝 Level Quiz</h3>
+              <p style="color:var(--gray-dark); margin-bottom:12px;">Answer all questions to test your knowledge. You need 60% to pass.</p>
+              <div id="quizQuestions"></div>
+              <div class="btn-group" style="margin-top:16px;">
+                <button class="btn" id="submitQuizBtn" onclick="submitQuiz(${levelId})">✅ Submit Quiz</button>
+                ${hasStarted ? `<button class="btn outline small" onclick="resetQuiz(${levelId})">🔄 Reset</button>` : ''}
+              </div>
+              <div id="quizResult" style="margin-top:12px;"></div>
+            `;
+                renderQuizQuestions(levelId);
+            }
+        }
+
+        // ================================================================
+        //  QUIZ RENDER
+        // ================================================================
+
+        function renderQuizQuestions(levelId) {
+            const lv = LEVELS.find(l => l.id === levelId);
+            if (!lv) return;
+            const container = document.getElementById('quizQuestions');
+            if (!container) return;
+
+            const answers = state.quizAnswers[levelId] || {};
+
+            container.innerHTML = lv.quiz.map((q, idx) => {
+                const selected = answers[idx] !== undefined ? answers[idx] : -1;
+                return `
+              <div class="question" id="q-${levelId}-${idx}">
+                <div class="q-text">${idx + 1}. ${q.question}</div>
+                <div class="options">
+                  ${q.options.map((opt, optIdx) => `
+                    <label style="cursor:pointer;" onclick="selectQuizOption(${levelId}, ${idx}, ${optIdx})">
+                      <input type="radio" name="q-${levelId}-${idx}" value="${optIdx}" ${selected === optIdx ? 'checked' : ''}>
+                      ${opt}
+                    </label>
+                  `).join('')}
+                </div>
+                <div class="explanation" id="exp-${levelId}-${idx}"></div>
+              </div>
+            `;
+            }).join('');
+        }
+
+        function selectQuizOption(levelId, qIdx, optIdx) {
+            if (state.quizSubmitted[levelId]) return;
+
+            if (!state.quizAnswers[levelId]) state.quizAnswers[levelId] = {};
+            state.quizAnswers[levelId][qIdx] = optIdx;
+            saveState();
+
+            // update UI
+            const container = document.getElementById('quizQuestions');
+            if (container) {
+                const radios = container.querySelectorAll(`input[name="q-${levelId}-${qIdx}"]`);
+                radios.forEach((r, i) => {
+                    r.checked = i === optIdx;
+                    const label = r.closest('label');
+                    if (label) {
+                        label.classList.toggle('selected', i === optIdx);
+                    }
+                });
+            }
+        }
+
+        // ================================================================
+        //  SUBMIT QUIZ
+        // ================================================================
+
+        function submitQuiz(levelId) {
+            const lv = LEVELS.find(l => l.id === levelId);
+            if (!lv) return;
+
+            const answers = state.quizAnswers[levelId] || {};
+            const total = lv.quiz.length;
+            let correct = 0;
+
+            // check if all answered
+            for (let i = 0; i < total; i++) {
+                if (answers[i] === undefined) {
+                    showToast('Please answer all questions before submitting!', 'error');
+                    return;
+                }
+            }
+
+            // grade
+            lv.quiz.forEach((q, idx) => {
+                const selected = answers[idx];
+                const isCorrect = selected === q.correct;
+                if (isCorrect) correct++;
+
+                // show explanation
+                const expEl = document.getElementById(`exp-${levelId}-${idx}`);
+                if (expEl) {
+                    expEl.innerHTML = `<strong>${isCorrect ? '✅ Correct' : '❌ Incorrect'}</strong> — ${q.explanation}`;
+                    expEl.classList.add('show');
+                }
+
+                // highlight options
+                const qContainer = document.getElementById(`q-${levelId}-${idx}`);
+                if (qContainer) {
+                    const labels = qContainer.querySelectorAll('.options label');
+                    labels.forEach((label, li) => {
+                        label.classList.remove('correct-answer', 'wrong-answer');
+                        if (li === q.correct) label.classList.add('correct-answer');
+                        if (li === selected && li !== q.correct) label.classList.add('wrong-answer');
+                    });
+                    qContainer.classList.add(isCorrect ? 'correct' : 'wrong');
+                }
+            });
+
+            const score = Math.round((correct / total) * 100);
+            const passed = score >= 60;
+
+            // update state
+            const prog = getLevelProgress(levelId);
+            prog.quizScore = score;
+            if (passed) {
+                prog.completed = true;
+            }
+            state.quizSubmitted[levelId] = true;
+            state.quizHistory.push({
+                levelId,
+                date: Date.now(),
+                score,
+                total
+            });
+
+            // unlock achievement
+            if (passed) {
+                checkAchievements(levelId);
+            }
+
+            saveState();
+            updateScore();
+
+            // re-render level
+            renderLevel(levelId);
+            showToast(`Quiz complete! You scored ${score}% ${passed ? '🎉 Passed!' : '😅 Keep practising!'}`, passed ? 'success' :
+            'error');
+        }
+
+        function resetQuiz(levelId) {
+            state.quizAnswers[levelId] = {};
+            state.quizSubmitted[levelId] = false;
+            // don't reset score — keep it for history
+            saveState();
+            renderLevel(levelId);
+            showToast('Quiz reset. Try again!', 'gold');
+        }
+
+        function showQuizReview(levelId) {
+            const lv = LEVELS.find(l => l.id === levelId);
+            if (!lv) return;
+            const answers = state.quizAnswers[levelId] || {};
+            const container = document.getElementById('quizQuestions');
+            if (!container) return;
+
+            container.innerHTML = lv.quiz.map((q, idx) => {
+                const selected = answers[idx];
+                const isCorrect = selected === q.correct;
+                const selectedText = selected !== undefined ? q.options[selected] : 'Not answered';
+                const correctText = q.options[q.correct];
+                return `
+              <div class="question ${isCorrect ? 'correct' : 'wrong'}" style="margin-bottom:12px;">
+                <div class="q-text">${idx + 1}. ${q.question}</div>
+                <div style="font-size:0.95rem; margin-bottom:4px;">
+                  <strong>Your answer:</strong> ${selectedText}
+                  ${selected !== undefined ? (isCorrect ? ' ✅' : ' ❌') : ''}
+                </div>
+                <div style="font-size:0.95rem; color:#2ecc71;">
+                  <strong>Correct answer:</strong> ${correctText}
+                </div>
+                <div style="margin-top:8px; padding:8px 12px; background:var(--gray); border-radius:8px; font-size:0.9rem;">
+                  ${q.explanation}
+                </div>
+              </div>
+            `;
+            }).join('');
+        }
+
+        // ================================================================
+        //  LESSON VIEW
+        // ================================================================
+
+        function openLesson(levelId, lessonIndex) {
+            const lv = LEVELS.find(l => l.id === levelId);
+            if (!lv) return;
+            const lesson = lv.lessons[lessonIndex];
+            if (!lesson) return;
+
+            // mark as done
+            const prog = getLevelProgress(levelId);
+            if (!prog.lessonsDone.includes(lessonIndex)) {
+                prog.lessonsDone.push(lessonIndex);
+                saveState();
+                updateScore();
+            }
+
+            // show in a modal-like card
+            const container = document.getElementById('levelLessons');
+            container.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
+              <button class="btn outline small" onclick="renderLevel(${levelId})">← Back to Level</button>
+              <span style="font-size:0.85rem; color:var(--gray-dark);">${lesson.type.toUpperCase()}</span>
+            </div>
+            <div class="lesson-content">
+              ${lesson.content}
+            </div>
+            <div style="margin-top:16px; display:flex; gap:12px; flex-wrap:wrap;">
+              <button class="btn" onclick="renderLevel(${levelId})">✅ Done — Back to Level</button>
+              ${lessonIndex < lv.lessons.length - 1 ? `<button class="btn gold" onclick="openLesson(${levelId}, ${lessonIndex + 1})">Next Lesson →</button>` : ''}
+            </div>
+          `;
+        }
+
+        // ================================================================
+        //  IELTS
+        // ================================================================
+
+        const IELTS_DATA = {
+            reading: {
+                title: '📖 IELTS Reading',
+                content: `
+              <h3>Reading Practice</h3>
+              <p><strong>Passage:</strong> The history of the English language is a story of invasion, migration, and cultural exchange. From the arrival of the Anglo-Saxons in the 5th century to the Norman Conquest in 1066, each wave of settlers brought new words and grammatical structures. Today, English is spoken by over 1.5 billion people worldwide, making it one of the most influential languages in history.</p>
+              <p><strong>Question:</strong> What is the main idea of this passage?</p>
+              <ul>
+                <li>A) English is spoken by 1.5 billion people.</li>
+                <li>B) The English language has been shaped by historical events.</li>
+                <li>C) The Norman Conquest happened in 1066.</li>
+                <li>D) Anglo-Saxons arrived in the 5th century.</li>
+              </ul>
+              <p style="color:var(--gray-dark);"><strong>Answer:</strong> B) The English language has been shaped by historical events.</p>
+              <div class="example">
+                <strong>IELTS Tip:</strong> Always read the questions before the passage to know what to look for.
+              </div>
+            `
+            },
+            writing: {
+                title: '✍️ IELTS Writing',
+                content: `
+              <h3>Writing Task 1: Describing Data</h3>
+              <p><strong>Task:</strong> The chart below shows the number of tourists visiting the UK from 2010 to 2020. Describe the trend.</p>
+              <div style="background:var(--gray); padding:16px; border-radius:10px; margin:12px 0;">
+                <p><strong>Data:</strong> 2010: 25M | 2012: 28M | 2014: 30M | 2016: 33M | 2018: 36M | 2020: 22M</p>
+              </div>
+              <p><strong>Sample answer:</strong> "The chart illustrates the number of tourists visiting the UK over a decade. Overall, there was a steady increase from 2010 to 2018, with figures rising from 25 million to 36 million. However, a significant drop occurred in 2020, when tourist numbers fell to 22 million, likely due to the global pandemic."</p>
+              <div class="example">
+                <strong>IELTS Tip:</strong> Use a range of vocabulary: "rose", "increased", "peaked", "declined", "plummeted".
+              </div>
+            `
+            },
+            listening: {
+                title: '🎧 IELTS Listening',
+                content: `
+              <h3>Listening Practice: British Accents</h3>
+              <p><strong>Audio transcript (British English):</strong></p>
+              <div style="background:var(--gray); padding:16px; border-radius:10px; margin:12px 0;">
+                "Hello, and welcome to the British Museum. Today we're going to explore the Rosetta Stone, one of the most important artefacts in our collection. The stone was discovered in 1799 by French soldiers in Egypt. It contains the same text in three scripts: hieroglyphic, demotic, and Greek. This allowed scholars to finally decipher Egyptian hieroglyphs."
+              </div>
+              <p><strong>Question:</strong> When was the Rosetta Stone discovered?</p>
+              <ul>
+                <li>A) 1779</li>
+                <li>B) 1799</li>
+                <li>C) 1899</li>
+                <li>D) 1699</li>
+              </ul>
+              <p style="color:var(--gray-dark);"><strong>Answer:</strong> B) 1799</p>
+              <div class="example">
+                <strong>IELTS Tip:</strong> British speakers often drop the 'r' sound and use linking words like "actually", "brilliant", "cheers".
+              </div>
+            `
+            },
+            speaking: {
+                title: '🗣️ IELTS Speaking',
+                content: `
+              <h3>Speaking Part 1: Hometown</h3>
+              <p><strong>Question:</strong> Where are you from?</p>
+              <p><strong>Sample answer:</strong> "I'm from Manchester, which is a city in the north-west of England. It's quite famous for its music scene and its football teams, Manchester United and Manchester City. I've lived there for most of my life, although I did spend a few years in London for university."</p>
+              <p><strong>Question:</strong> What do you like about your hometown?</p>
+              <p><strong>Sample answer:</strong> "I really like the vibrant atmosphere. There's always something going on, whether it's a concert, a festival, or a football match. Also, the people are very friendly and welcoming. I'd say it's a great place to live."</p>
+              <div class="example">
+                <strong>IELTS Tip:</strong> In Part 1, give extended answers (2-3 sentences). Use linking words like "well", "actually", "you know".
+              </div>
+            `
+            },
+            vocabulary: {
+                title: '📝 IELTS Vocabulary',
+                content: `
+              <h3>Academic Word List (AWL) — Top 20</h3>
+              <div class="vocab-grid">
+                <div class="vocab-item"><span class="en">analyse</span> <span class="id">menganalisis</span></div>
+                <div class="vocab-item"><span class="en">approach</span> <span class="id">pendekatan</span></div>
+                <div class="vocab-item"><span class="en">area</span> <span class="id">area / bidang</span></div>
+                <div class="vocab-item"><span class="en">assess</span> <span class="id">menilai</span></div>
+                <div class="vocab-item"><span class="en">assume</span> <span class="id">berasumsi</span></div>
+                <div class="vocab-item"><span class="en">context</span> <span class="id">konteks</span></div>
+                <div class="vocab-item"><span class="en">data</span> <span class="id">data</span></div>
+                <div class="vocab-item"><span class="en">define</span> <span class="id">mendefinisikan</span></div>
+                <div class="vocab-item"><span class="en">demonstrate</span> <span class="id">menunjukkan</span></div>
+                <div class="vocab-item"><span class="en">derive</span> <span class="id">berasal dari</span></div>
+                <div class="vocab-item"><span class="en">environment</span> <span class="id">lingkungan</span></div>
+                <div class="vocab-item"><span class="en">establish</span> <span class="id">mendirikan</span></div>
+                <div class="vocab-item"><span class="en">evaluate</span> <span class="id">mengevaluasi</span></div>
+                <div class="vocab-item"><span class="en">factor</span> <span class="id">faktor</span></div>
+                <div class="vocab-item"><span class="en">function</span> <span class="id">fungsi</span></div>
+                <div class="vocab-item"><span class="en">identify</span> <span class="id">mengidentifikasi</span></div>
+                <div class="vocab-item"><span class="en">indicate</span> <span class="id">menunjukkan</span></div>
+                <div class="vocab-item"><span class="en">interpret</span> <span class="id">menafsirkan</span></div>
+                <div class="vocab-item"><span class="en">investigate</span> <span class="id">menyelidiki</span></div>
+                <div class="vocab-item"><span class="en">method</span> <span class="id">metode</span></div>
+              </div>
+              <div class="example">
+                <strong>IELTS Tip:</strong> Use these words in your writing to achieve a higher band score. Practice using them in sentences.
+              </div>
+            `
+            },
+            grammar: {
+                title: '🔍 IELTS Grammar',
+                content: `
+              <h3>Complex Structures for Band 7+</h3>
+              <h4>1. Inversion</h4>
+              <p>Rarely do we see such dedication. (Instead of: We rarely see such dedication.)</p>
+              <p>Not only did she pass the exam, but she also scored the highest mark.</p>
+
+              <h4>2. Cleft Sentences</h4>
+              <p>What I find most interesting is the cultural diversity.</p>
+              <p>It was the teacher who inspired me to study English.</p>
+
+              <h4>3. Conditional with "were"</h4>
+              <p>Were I to choose a career, I would pick teaching.</p>
+              <p>Had I known about the event, I would have attended.</p>
+
+              <h4>4. Passive with reporting verbs</h4>
+              <p>It is believed that the project will be successful.</p>
+              <p>The government is said to be considering new policies.</p>
+
+              <div class="example">
+                <strong>IELTS Tip:</strong> Using a variety of complex structures demonstrates a high level of grammatical control.
+              </div>
+            `
+            }
+        };
+
+        function renderIelts() {
+            // just show the grid, detail hidden
+            document.getElementById('ieltsDetail').style.display = 'none';
+            // re-render grid to ensure
+        }
+
+        function openIeltsModule(moduleKey) {
+            const data = IELTS_DATA[moduleKey];
+            if (!data) return;
+
+            state.ieltsModule = moduleKey;
+            saveState();
+
+            const detail = document.getElementById('ieltsDetail');
+            detail.style.display = 'block';
+            document.getElementById('ieltsDetailTitle').textContent = data.title;
+            document.getElementById('ieltsDetailContent').innerHTML = data.content;
+            // scroll to detail
+            detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function closeIeltsDetail() {
+            document.getElementById('ieltsDetail').style.display = 'none';
+            state.ieltsModule = null;
+            saveState();
+        }
+
+        // ================================================================
+        //  PROGRESS
+        // ================================================================
+
+        function renderProgress() {
+            const stats = updateScore();
+            document.getElementById('pLevels').textContent = stats.completed;
+            document.getElementById('pQuizzes').textContent = state.quizHistory.length;
+            document.getElementById('pScore').textContent = stats.total;
+            document.getElementById('pLessons').textContent = stats.lessonsViewed;
+
+            const totalLevels = LEVELS.length;
+            const pct = totalLevels > 0 ? Math.round((stats.completed / totalLevels) * 100) : 0;
+            document.getElementById('pPercent').textContent = pct + '%';
+            document.getElementById('pBar').style.width = pct + '%';
+
+            // achievements
+            renderAchievements();
+
+            // quiz history
+            const historyContainer = document.getElementById('quizHistory');
+            if (state.quizHistory.length === 0) {
+                historyContainer.innerHTML = `<p style="color:var(--gray-dark);">No quiz history yet. Start learning!</p>`;
+            } else {
+                historyContainer.innerHTML = state.quizHistory.slice().reverse().map(q => {
+                    const lv = LEVELS.find(l => l.id === q.levelId);
+                    return `
+                <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--gray);">
+                  <div>
+                    <strong>${lv ? lv.name : 'Level ' + (q.levelId + 1)}</strong>
+                    <span style="font-size:0.85rem; color:var(--gray-dark);">${new Date(q.date).toLocaleString()}</span>
+                  </div>
+                  <span style="font-weight:700; color:${q.score >= 60 ? '#2ecc71' : '#e74c3c'};">${q.score}/${q.total} (${Math.round((q.score/q.total)*100)}%)</span>
+                </div>
+              `;
+                }).join('');
+            }
+        }
+
+        // ================================================================
+        //  ACHIEVEMENTS
+        // ================================================================
+
+        const ACHIEVEMENT_DEFS = [
+            { id: 'first_quiz', icon: '🌟', title: 'First Quiz', desc: 'Complete your first quiz', check: () => state
+                    .quizHistory.length >= 1 },
+            { id: 'level_1', icon: '📘', title: 'Level 1 Complete', desc: 'Complete Beginner level', check: () => state
+                    .levelProgress[0] && state.levelProgress[0].completed === true },
+            { id: 'level_3', icon: '📗', title: 'Level 3 Complete', desc: 'Complete Pre-Intermediate level', check: () =>
+                    state.levelProgress[2] && state.levelProgress[2].completed === true },
+            { id: 'level_5', icon: '📕', title: 'Level 5 Complete', desc: 'Complete Upper-Intermediate level', check: () =>
+                    state.levelProgress[4] && state.levelProgress[4].completed === true },
+            { id: 'ielts_ready', icon: '🎯', title: 'IELTS Ready', desc: 'Complete IELTS Preparation level', check: () =>
+                    state.levelProgress[6] && state.levelProgress[6].completed === true },
+            { id: 'quiz_master', icon: '🏅', title: 'Quiz Master', desc: 'Get 80%+ on 3 quizzes', check: () => {
+                    const highScores = state.quizHistory.filter(q => q.score / q.total >= 0.8);
+                    return highScores.length >= 3;
+                } },
+            { id: 'perfect_score', icon: '💯', title: 'Perfect Score', desc: 'Get 100% on a quiz', check: () => state
+                    .quizHistory.some(q => q.score === q.total) },
+        ];
+
+        function checkAchievements(levelId) {
+            let unlocked = false;
+            ACHIEVEMENT_DEFS.forEach(def => {
+                if (!state.achievements.includes(def.id) && def.check()) {
+                    state.achievements.push(def.id);
+                    unlocked = true;
+                    showToast(`🏆 Achievement unlocked: ${def.icon} ${def.title}!`, 'gold');
+                }
+            });
+            if (unlocked) saveState();
+        }
+
+        function renderAchievements() {
+            const container = document.getElementById('achievementsList');
+            container.innerHTML = ACHIEVEMENT_DEFS.map(def => {
+                const unlocked = state.achievements.includes(def.id);
+                return `
+              <div class="achievement ${unlocked ? '' : 'locked'}">
+                <div class="icon">${def.icon}</div>
+                <div class="info">
+                  <div class="title">${def.title} ${unlocked ? '✅' : '🔒'}</div>
+                  <div class="desc">${def.desc}</div>
+                </div>
+              </div>
+            `;
+            }).join('');
+        }
+
+        // ================================================================
+        //  TOAST
+        // ================================================================
+
+        let toastTimeout;
+
+        function showToast(message, type = 'success') {
+            const el = document.getElementById('toast');
+            el.textContent = message;
+            el.className = 'toast ' + type;
+            clearTimeout(toastTimeout);
+            // force reflow
+            void el.offsetWidth;
+            el.classList.add('show');
+            toastTimeout = setTimeout(() => {
+                el.classList.remove('show');
+            }, 3500);
+        }
+
+        // ================================================================
+        //  INIT
+        // ================================================================
+
+        loadState();
+        renderHome();
+        renderLearn();
+        renderProgress();
+        renderAchievements();
+        updateScore();
+
+        // nav event listeners
+        document.querySelectorAll('#mainNav button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                navigateTo(btn.dataset.section);
+            });
+        });
+
+        // if there's a level id in state, open it
+        if (state.currentLevelId !== null) {
+            const lv = LEVELS.find(l => l.id === state.currentLevelId);
+            if (lv && isLevelUnlocked(lv.id)) {
+                navigateTo('level', { levelId: state.currentLevelId });
+            }
+        }
+
+        console.log('🇬🇧 British Score ready!');
+        console.log('📊 Current state:', state);
+    </script>
+</body>
+</html>
